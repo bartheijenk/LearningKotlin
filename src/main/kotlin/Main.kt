@@ -5,12 +5,14 @@ object Main {
     fun main(args: Array<String>) {
         val scanner = Scanner(System.`in`)
         while (true) {
-            var input = scanner.next()
+            hoi = scanner.nextLine()
 
-            println("Input: " + input)
+
+            println(hoi)
         }
     }
 
-    var hoi : String = ""
+    var hoi: String = ""
+        get() = "Hallo $field"
         private set
 }
