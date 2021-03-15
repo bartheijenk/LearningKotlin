@@ -1,6 +1,7 @@
 package h7.BankingApp
 
 import java.math.BigDecimal
+import java.math.RoundingMode
 
 fun main() {
 
@@ -15,6 +16,8 @@ fun main() {
 
     allAccounts.stream()
             .forEach {
-                println("Account with account number ${it.accountNumber} has a balance of €${it.balance.setScale(2)}")
+                println("Account with account number ${it.accountNumber} " +
+                        "would get €${it.calculateInterest().setScale(2, RoundingMode.HALF_UP)} " +
+                        "in interest")
             }
 }

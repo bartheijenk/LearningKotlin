@@ -21,9 +21,12 @@ class Account(val accountNumber: String, initialBalance: BigDecimal, var interes
         }
     }
 
+    fun calculateInterest() : BigDecimal {
+        return balance * (interestRate / 100).toBigDecimal()
+    }
+
     fun addInterest() {
-        val interest = balance * (interestRate / 100).toBigDecimal()
-        balance += interest
+        balance += calculateInterest()
     }
 }
 
