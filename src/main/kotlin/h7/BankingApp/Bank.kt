@@ -18,7 +18,7 @@ class Bank(val naam:String) {
         accounts.removeIf { it.accountNumber == nummer }
     }
 
-    fun transferMoney(nummerFrom: String, nummerTo: String, amount: BigDecimal) {
+    fun transferMoney(nummerFrom: String, nummerTo: String, amount: BigDecimal): Boolean {
         val accountFrom = accounts.find { it.accountNumber == nummerFrom }
         val accountTo = accounts.find { it.accountNumber == nummerTo }
 
@@ -27,9 +27,12 @@ class Bank(val naam:String) {
             accountTo?.deposit(amount, accountFrom) ?: throw AccountNotFoundException()
         } catch (e: NotEnoughBalanceException) {
             println(e.message)
+            return false
         } catch (e: AccountNotFoundException) {
             println(e.message)
+            return false
         }
+        return true
     }
 
     fun printAccounts() {

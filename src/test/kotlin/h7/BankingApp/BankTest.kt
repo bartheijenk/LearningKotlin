@@ -43,7 +43,7 @@ internal class BankTest {
     inner class transferMoneyTest() {
         @Test
         fun `Transfer money normally`() {
-            bank.transferMoney(a1.accountNumber, a2.accountNumber, BigDecimal.TEN)
+            Assertions.assertTrue(bank.transferMoney(a1.accountNumber, a2.accountNumber, BigDecimal.TEN))
 
             Assertions.assertEquals(basicBalance - BigDecimal.TEN, a1.balance)
             Assertions.assertEquals(basicBalance + BigDecimal.TEN, a2.balance)
@@ -51,7 +51,7 @@ internal class BankTest {
 
         @Test
         fun `Transfer too much money` () {
-            bank.transferMoney(a1.accountNumber, a2.accountNumber, basicBalance + BigDecimal.ONE)
+            Assertions.assertFalse(bank.transferMoney(a1.accountNumber, a2.accountNumber, basicBalance + BigDecimal.ONE))
 
             Assertions.assertEquals(basicBalance, a1.balance)
             Assertions.assertEquals(basicBalance, a2.balance)
@@ -59,9 +59,9 @@ internal class BankTest {
 
         @Test
         fun `Account doesn't exist` () {
-            bank.transferMoney("This one does not exist", a2.accountNumber, BigDecimal.TEN)
+            Assertions.assertFalse(bank.transferMoney("This one does not exist", a2.accountNumber, BigDecimal.TEN))
 
-            Assertions.assertEquals(basicBalance, a2.balance)
+
         }
     }
 }
