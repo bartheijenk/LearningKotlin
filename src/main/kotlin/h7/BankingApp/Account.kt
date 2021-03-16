@@ -1,7 +1,6 @@
 package h7.BankingApp
 
 import java.math.BigDecimal
-import java.util.stream.Collectors
 
 class Account(val accountNumber: String, initialBalance: BigDecimal, var interestRate: Float = 1.0F) {
 
@@ -9,25 +8,33 @@ class Account(val accountNumber: String, initialBalance: BigDecimal, var interes
 
     private var transactions = emptyList<Transaction>().toMutableList()
 
-    fun sendMoney(accountTo: Account, amount: BigDecimal) {
-        if (amount <= balance) {
-            val transaction = Transaction(this, accountTo, amount)
-            transactions.add(transaction)
-            accountTo.transactions.add(transaction)
-            balance -= amount
-            accountTo.balance += amount
-        } else {
-            throw NotEnoughBalanceException()
-        }
-    }
 
-    fun calculateInterest() : BigDecimal {
+    fun calculateInterest(): BigDecimal {
         return balance * (interestRate / 100).toBigDecimal()
     }
 
     fun addInterest() {
         balance += calculateInterest()
     }
+
+    fun withdraw(amount: BigDecimal, accountTo: Account? = null) {
+        if (amount >= balance) {
+            throw NotEnoughBalanceException()
+        } else {
+            balance -= amount
+            if (accountTo != null) {
+                transactions.add(Transaction(accountTo, amount))
+            }
+        }
+    }
+
+    fun deposit(amount: BigDecimal, accountFrom: Account? = null) {
+        balance += amount
+
+        if (accountFrom != null) {
+            transactions.add(Transaction(accountFrom, amount))
+        }
+    }
 }
 
-data class Transaction(val accountFrom: Account, val accountTo :Account, val amount:BigDecimal)
+data class Transaction(val accountTo: Account, val amount: BigDecimal)
