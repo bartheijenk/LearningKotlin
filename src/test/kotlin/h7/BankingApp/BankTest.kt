@@ -14,6 +14,7 @@ internal class BankTest {
     private val a1: Account
     private val a2: Account
     private val a3: Account
+
     init {
         bank = Bank("bank")
 
@@ -50,15 +51,21 @@ internal class BankTest {
         }
 
         @Test
-        fun `Transfer too much money` () {
-            Assertions.assertFalse(bank.transferMoney(a1.accountNumber, a2.accountNumber, basicBalance + BigDecimal.ONE))
+        fun `Transfer too much money`() {
+            Assertions.assertFalse(
+                bank.transferMoney(
+                    a1.accountNumber,
+                    a2.accountNumber,
+                    basicBalance + BigDecimal.ONE
+                )
+            )
 
             Assertions.assertEquals(basicBalance, a1.balance)
             Assertions.assertEquals(basicBalance, a2.balance)
         }
 
         @Test
-        fun `Account doesn't exist` () {
+        fun `Account doesn't exist`() {
             Assertions.assertFalse(bank.transferMoney("This one does not exist", a2.accountNumber, BigDecimal.TEN))
 
 

@@ -3,9 +3,9 @@ package h7.BankingApp
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-class Bank(val naam:String) {
+class Bank(val naam: String) {
 
-    private var accounts : MutableList<Account> = mutableListOf()
+    private var accounts: MutableList<Account> = mutableListOf()
 
     init {
     }
@@ -38,9 +38,11 @@ class Bank(val naam:String) {
     fun printAccounts() {
         accounts.stream()
             .forEach {
-                println("Account with account number ${it.accountNumber} " +
-                        "would get €${it.calculateInterest().setScale(2, RoundingMode.HALF_UP)} " +
-                        "in interest")
+                println(
+                    "Account with account number ${it.accountNumber} " +
+                            "would get €${it.calculateInterest().setScale(2, RoundingMode.HALF_UP)} " +
+                            "in interest"
+                )
             }
     }
 

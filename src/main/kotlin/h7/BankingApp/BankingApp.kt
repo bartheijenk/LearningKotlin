@@ -1,13 +1,12 @@
 package h7.BankingApp
 
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 fun main() {
     val b = Bank("Bank")
 
-    var a1 = Account("1", BigDecimal(500))
-    var a2 = Account("2", BigDecimal(300))
+    val a1 = Account("1", BigDecimal(500))
+    val a2 = Account("2", BigDecimal(300))
 
     b.addAccount(a1, a2)
 
