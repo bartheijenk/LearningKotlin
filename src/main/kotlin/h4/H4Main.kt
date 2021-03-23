@@ -28,13 +28,13 @@ fun elevenProofOne(next: String?) {
 }
 
 fun warmAndCold(next: String?): Temp {
-    when (next) {
-        "Summer" -> return Temp.WARM
-        "Spring" -> return Temp.WARM
-        "Fall" -> return Temp.COLD
-        "Winter" -> return Temp.COLD
+    return when (next) {
+        "Summer" -> Temp.WARM
+        "Spring" -> Temp.WARM
+        "Fall" -> Temp.COLD
+        "Winter" -> Temp.COLD
         else -> {
-            return Temp.UKNOWN
+            Temp.UKNOWN
         }
     }
 }

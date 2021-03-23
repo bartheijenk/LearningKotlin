@@ -49,6 +49,33 @@ class Fibo {
         return array
     }
 
+    //    yield test
+    fun fibonacciYield() = sequence {
+//    Pair zijn twee variabelen die bij elkaar horen
+//    Pair werkt beter omdat de assignment tegelijk gebeurd, dus wat 3 ints nodig heeft wordt nu in 2 gedaan
+        var terms = Pair(0, 1)
+
+        var a = 0
+        var b = 1
+        var c = 1
+
+//    The fibonnaci loop
+        while (true) {
+//        Hier returned hij wat hij momenteel heeft
+
+//        yield(a)
+            yield(terms.first)
+
+//        Hier berekent hij de volgende fibbonaci term
+            b += a
+            a = c
+            c = b
+
+            terms = Pair(terms.second, terms.first + terms.second)
+        }
+//    Deze loop blijft oneindig doorgaan!!!
+    }
+
 
 }
 

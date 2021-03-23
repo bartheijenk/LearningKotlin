@@ -31,11 +31,6 @@ fun doubleArray(array: LongArray) : LongArray {
     val copy = LongArray(doubledSize)
 
     array.copyInto(copy)
-//    var counter = 0
-//    array.forEach {
-//        copy[counter] = it
-//        counter++
-//    }
     return copy
 
 }
