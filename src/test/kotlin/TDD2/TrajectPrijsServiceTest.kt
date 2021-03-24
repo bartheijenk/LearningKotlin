@@ -18,13 +18,13 @@ internal class TrajectPrijsServiceTest {
     lateinit var prijsService: TrajectEenhedenNaarPrijsService
 
     @InjectMockKs
-    private var trajectPrijsService : TrajectPrijsService = TrajectPrijsService()
+    private lateinit var trajectPrijsService: TrajectPrijsService
 
     @BeforeEach
     fun setup() = MockKAnnotations.init(this)
 
     @Test
-    fun getTrajectPrijs() {
+    fun `getTrajectPrijs normal situation`() {
         //given en when
 
         every { eenhedenService.getTrajectEenheden("amsterdam", "utrecht") } returns 2
