@@ -3,7 +3,7 @@ package h10
 import h7.Gender
 import h7.PersonDiedException
 
-class Person(
+open class Person(
     val name: String,
     age: Int,
     var gender: Gender = Gender.UNKNOWN
