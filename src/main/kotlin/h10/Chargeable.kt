@@ -1,7 +1,7 @@
 package h10
 
 interface Chargeable {
-//    var charge : Int
+    var charge : Int
 
     fun chargeUp(amount: Int) : Int
 }

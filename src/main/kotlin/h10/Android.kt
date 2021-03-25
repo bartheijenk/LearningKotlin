@@ -12,7 +12,7 @@ class Android : Human(), Chargeable {
         return "I'm only half human, but human still... My energy level is $charge%"
     }
 
-    private var charge: Int = 0
+    override var charge: Int = 0
         set(value) {
             when {
                 value > 100 -> {
@@ -43,9 +43,9 @@ class Android : Human(), Chargeable {
         return charge
     }
 
-        //    personal addiction, if Android does an action it uses charge to do that action
-        fun action() {
-            logger.debug { "Charge level at: $charge" }
-            charge -= 10
-        }
+    //    personal addiction, if Android does an action it uses charge to do that action
+    fun action() {
+        logger.debug { "Charge level at: $charge" }
+        charge -= 10
     }
+}
