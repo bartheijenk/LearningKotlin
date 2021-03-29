@@ -1,5 +1,7 @@
 package h10
 
+import h12.MyAnnotation
+import h12.MyAnnotation2
 import h7.Gender
 import h7.PersonDiedException
 
@@ -7,8 +9,7 @@ open class Person(
     val name: String,
     age: Int,
     var gender: Gender = Gender.UNKNOWN
-) : Human()
-{
+) : Human() {
     //    static values
     companion object {
         var numberOfPossibleGenders: Int = Gender.values().size
@@ -28,11 +29,13 @@ open class Person(
         this.age = age
     }
 
+    @MyAnnotation2
     fun haveBirthday() {
         age++
     }
 
-    override fun greet() : String {
+    @MyAnnotation
+    override fun greet(): String {
         return "Hello, my name is $name. Nice to meet you!"
     }
 
