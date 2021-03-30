@@ -32,7 +32,6 @@ fun doubleArray(array: LongArray) : LongArray {
 
     array.copyInto(copy)
     return copy
-
 }
 
 //Opdracht 4
